@@ -1,0 +1,25 @@
+name: Repository checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  repository-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check whitespace in tracked files
+        shell: bash
+        run: git diff --check "$(git hash-object -t tree /dev/null)" HEAD
+      - name: Check required documentation
+        shell: bash
+        run: |
+          for path in README.md AGENTS.md docs/team-agreement.md .gitignore .github/pull_request_template.md; do
+            test -s "$path" || { echo "Missing or empty file: $path"; exit 1; }
+          done

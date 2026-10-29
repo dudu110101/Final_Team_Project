@@ -1,0 +1,36 @@
+# Secrets and local environment (commit only sanitized examples)
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Local databases and backups
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+*.sqlite3-*
+*.bak
+*.dump
+backups/
+
+# OS and personal editor settings
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Temporary output and logs
+*.log
+tmp/
+temp/
+
+# Add stack-specific dependency/build rules when the stack is agreed.
